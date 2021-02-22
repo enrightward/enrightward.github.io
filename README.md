@@ -8,8 +8,4 @@ Language: English
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-A machine learning blog, based on jupyter notebooks. I use the chirpy theme: [chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy)
-
-
-## Table of Contents
-xxx
+A machine learning blog, based on jupyter notebooks. I use the [chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy).
