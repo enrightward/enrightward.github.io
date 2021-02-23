@@ -86,9 +86,7 @@ plt.title(r'Distribution of H(p, q)')
 plt.show()
 ```
 
-
-![png](output_7_0.png)
-
+![png](/assets/img/hpq_histogram.png)
 
 There appears to be a hard cut-off around $$H(p, q) = 1.2$$, below which there are no samples. What's going on? It turns out this lower bound is $$H(p, p)$$. Empirically, this looks correct:
 
