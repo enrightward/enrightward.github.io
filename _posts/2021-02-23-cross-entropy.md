@@ -1,4 +1,4 @@
-# Cross entropy$$$$
+# Definitions 
 
 Suppose $$p$$ is a discrete PDF with support ("outcome space") $$S = \{ x_{1}, \ldots, x_{n} \}$$. The _entropy_ of $$p$$ is defined to be:
 
