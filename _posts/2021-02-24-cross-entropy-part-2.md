@@ -20,7 +20,7 @@ For any collection $$t_{1}, \ldots, t_{n}$$ of real numbers, the $$n$$-tuple:
 q(t_{1}, \ldots, t_{n}) := \left( \frac{e^{t_{1}}}{Z}, \ldots, \frac{e^{t_{n}}}{Z} \right),
 \end{equation}
 
-where $$Z$$ is the normalisation constant $$\sum_{i=1}^{n} e^{t_{i}}$$, is a PDF. Indeed, each entry of $$q$$ is positive-valued, since its numerator and denominator are sums of real-valued exponentials, and the sum of the entries is $$Z$$, by construction of $$Z$$. Conversely, any PDF $$q = (q_{1}, \ldots, q_{n})$$ with all non-zero entries can be written in this form: Simply set $$t_{i}$$ equal to $$\log(q_{i})$$. We call this the _softmax parametrisation_ of $$q$$
+where $$Z$$ is the normalisation constant $$\sum_{i=1}^{n} e^{t_{i}}$$, is a PDF. Indeed, each entry of $$q$$ is positive-valued, since its numerator and denominator are sums of real-valued exponentials, and these entries sum to $$1$$, by construction of $$Z$$. Conversely, any PDF $$q = (q_{1}, \ldots, q_{n})$$ with all non-zero entries can be written in this form: Simply set $$t_{i}$$ equal to $$\log(q_{i})$$. We call this the _softmax parametrisation_ of $$q$$.
 
 ### Proof that $$p \mapsto H(p, q)$$ is convex
 
