@@ -1,3 +1,10 @@
+---
+title: Cross entropy — Part 1
+date: 2021-02-23
+categories: [statistics, entropy]
+tags: [statistics, entropy, cross entropy]
+---
+
 ## Introduction
 
 In this post, I discuss the _cross entropy_ $$H(p, q)$$ of two discrete PDFs $$p$$ and $$q$$. It is a loose measure of similarity of $$p$$ and $$q$$, and so is used in machine learning to define objective functions for tasks where the goal is to learn a PDF $$p$$ implicit in training data by updating the internal parameters of a learnt PDF $$q$$. After explaining this application in more detail, I: 
@@ -8,7 +15,7 @@ In this post, I discuss the _cross entropy_ $$H(p, q)$$ of two discrete PDFs $$p
 
 This last point both suggests that cross entropy measures similarity.
 
-### Why is cross entropy useful in machine learning?
+## Why is cross entropy useful in machine learning?
 
 The above-mentioned global minimum $$q = p$$ of $$q \mapsto H(p, q)$$ suggests that cross entropy is a measure of closeness between $$p$$ and $$q$$. This is not true in the strict sense of being a [metric à la pure mathematics](https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition) (in general, $$H(p, p)$$ is not zero, and 
 $$H(p, q)$$ and $$H(q, p)$$ are different), but it is true enough to be useful in machine learning. Before jumping into details, let me give an example of this usefulness.
@@ -24,10 +31,10 @@ The machine would have to predict "mat", given the other words. Cross entropy en
 
 Under the hood, $$q$$ often depends on many, many parameters, which the machine can alter. The machine's learning task is to update these parameters to make $$q$$ as "close" to $$p$$ as possible. Here, people can and often do define "close" to mean the cross entropy $$H(p, q)$$ is as small as possible.
 
-### TL;DR: 
+## TL;DR: 
 Cross entropy is often used in machine learning to define an objective function that measures the difference between a mythical, always-correct PDF $$p$$ (which in practice is approximated from the data), and the machine's best-guess PDF $$q$$.
 
-### A quick introduction to entropy
+## A quick introduction to entropy
 
 Suppose $$p$$ is a discrete PDF with support ("outcome space") $$S = \{ x_{1}, \ldots, x_{n} \}$$. The _entropy_ of $$p$$ is defined to be:
 
@@ -43,7 +50,7 @@ provided none of the $$p(x_{i})$$ is zero. If $$p(x_{i}) = 0$$ for some $$i$$, t
 
 The quantity $$s(x_{i}) := \log(1/p(x_{i}))$$ is called the _surprisal_ of the outcome $$x_{i}$$. It quantifies the "information" associated to $$x_{i}$$ — lower probability events are more surprising, hence their occurrence more informative. [Shannon's Source Coding Theorem](https://en.wikipedia.org/wiki/Shannon%27s_source_coding_theorem#:~:text=In%20information%20theory%2C%20Shannon's%20source,meaning%20of%20the%20Shannon%20entropy.&text=However%20it%20is%20possible%20to,with%20negligible%20probability%20of%20loss.) states that, if the logarithm is base 2, then $$s(x_{i})$$ approximates the length in bits of an optimal, lossless binary encoding for a message written in the outcome space alphabet $$x_{i}$$ and whose characters appear in this message with probabilities defined by $$p$$. 
 
-### Cross entropy
+## Cross entropy
 
 I won't talk more about entropy in this blog — instead I discuss _cross entropy_. Let $$q$$ be a second PDF with the same support $$S$$. Then the _cross entropy_ of the pair $$(p, q)$$ is defined to be:
 
@@ -136,7 +143,7 @@ plt.title(r'Distribution of H(p, q)')
 plt.show()
 ```
 
-![png](/assets/img/hpq_histogram.png)
+![png](/assets/img/cross-entropy/hpq_histogram.png)
 
 
 There appears to be a hard cut-off around $$H(p, q) = 1.2$$, below which there are no samples. What's going on? It turns out this lower bound is $$H(p, p)$$. Empirically, this looks correct:
@@ -149,7 +156,7 @@ print('H(p, p) = {:0.3f}'.format(cross_entropy(p, p)))
     H(p, p) = 1.191
 
 
-### Proof that $$q = p$$ minimises $$p \mapsto H(p, q)$$
+## Proof that $$q = p$$ minimises $$p \mapsto H(p, q)$$
 
 The goal is to show that for a fixed discrete PDF $$p$$, $$H(p, p) \le H(p, q)$$ for all PDFs $$q$$ with the same support as $$p$$. We use the following fact: Since $$y = x - 1$$ is the tangent at $$x = 1$$ to the convex function $$y = \log(x)$$, we have:
 

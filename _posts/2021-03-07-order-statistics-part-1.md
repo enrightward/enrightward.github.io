@@ -262,7 +262,7 @@ multi_bar_plot(axs, func, fontsizefunc, colour, tickfontsize, titlefontsize)
 ```
 
 
-![png](order-statistics-part-1_files/order-statistics-part-1_13_0.png)
+![png](/assets/img/order-statistics/part1/order_stats_bar_plots.png)
 
 
 ## A mathematical analysis, for small $$n$$
@@ -381,8 +381,7 @@ for k in ks:
 plot_2d(region_samples, dotwidth, limit)
 ```
 
-
-![png](order-statistics-part-1_files/order-statistics-part-1_17_0.png)
+![png](/assets/img/order-statistics/part1/order_stats_2d.png)
 
 
 ## Analysing the visulation: Computing CDFs
