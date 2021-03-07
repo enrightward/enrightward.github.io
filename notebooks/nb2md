@@ -1,0 +1,2 @@
+#!/bin/bash
+jupyter nbconvert --to markdown $1 --stdout | sed "s/\\$/\\$\\$/g" > ../_posts/$(date +%F)"-"$2
