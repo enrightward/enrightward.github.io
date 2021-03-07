@@ -25,6 +25,8 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 markdown: kramdown
+kramdown:
+  parse_block_html: true
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: https://enrightward.github.io
