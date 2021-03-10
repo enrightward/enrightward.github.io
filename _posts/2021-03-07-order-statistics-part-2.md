@@ -3,7 +3,10 @@ title: Order statistics — Part 2
 date: 2021-03-07
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, general formula]
+preview_image: /enrightward.github.io/assets/img/order-statistics/part2/dimprog.png
 ---
+
+![Desktop View](/assets/img/order-statistics/part2/dimprog.png)
 
 ## 1. Introduction
 

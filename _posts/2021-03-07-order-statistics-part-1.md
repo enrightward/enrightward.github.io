@@ -3,7 +3,10 @@ title: Order statistics — Part 1
 date: 2021-03-07
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, FTC]
+preview_image: /enrightward.github.io/assets/img/order-statistics/part1/running-a-race.jpg
 ---
+
+![Desktop View](/assets/img/order-statistics/part1/running-a-race.jpg)
 
 ## Introduction
 

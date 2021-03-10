@@ -3,7 +3,10 @@ title: Order statistics — Part 3
 date: 2021-03-08
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, expectation formula]
+preview_image: /enrightward.github.io/assets/img/order-statistics/part3/gamma.png
 ---
+
+![Desktop View](/assets/img/order-statistics/part3/gamma.png)
 
 ## 1. Introduction
 
