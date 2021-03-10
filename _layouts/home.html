@@ -48,7 +48,14 @@ layout: page
     <h1>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </h1>
-
+    
+    {% if post.preview_image %}
+    <p></p>
+    <div class="image-preview">
+        <img src={{ post.preview_image }}> 
+    </div>
+    {% endif %}
+    
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
