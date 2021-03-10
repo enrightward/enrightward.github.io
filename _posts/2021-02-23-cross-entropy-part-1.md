@@ -10,7 +10,7 @@ preview_image: /enrightward.github.io/assets/img/cross-entropy/blue-white-paint.
 
 ## Introduction
 
-In this post, I discuss the _cross entropy_ $$H(p, q)$$ of two discrete PDFs $$p$$ and $$q$$. It is a loose measure of similarity of $$p$$ and $$q$$, and so is used in machine learning to define objective functions for tasks where the goal is to learn a PDF $$p$$ implicit in training data by updating the internal parameters of a learnt PDF $$q$$. After explaining this application in more detail, I: 
+In  this post, I discuss the _cross entropy_ $$H(p, q)$$ of two discrete PDFs $$p$$ and $$q$$. It is a loose measure of similarity of $$p$$ and $$q$$, and so is used in machine learning to define objective functions for tasks where the goal is to learn a PDF $$p$$ implicit in training data by updating the internal parameters of a learnt PDF $$q$$. After explaining this application in more detail, I: 
 
 * Recall the definitions of _entropy_ and _cross entropy_ ;
 * Use numpy to do some example computations using cross entropy, and; 
