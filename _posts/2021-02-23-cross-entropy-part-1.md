@@ -3,7 +3,10 @@ title: Cross entropy — Part 1
 date: 2021-02-23
 categories: [statistics, entropy]
 tags: [statistics, entropy, cross entropy]
+preview_image: /enrightward.github.io/assets/img/cross-entropy/blue-white-paint.jpg
 ---
+
+![Desktop View](/assets/img/cross-entropy/blue-white-paint.jpg)
 
 ## Introduction
 

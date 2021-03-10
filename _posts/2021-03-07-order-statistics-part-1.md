@@ -1,5 +1,5 @@
 ---
-title: Order statistics — part 1
+title: Order statistics — Part 1
 date: 2021-03-07
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, FTC]

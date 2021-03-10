@@ -3,7 +3,10 @@ title: Cross entropy — Part 2
 date: 2021-02-24
 categories: [statistics, entropy]
 tags: [statistics, cross entropy, softmax, convexity]
+preview_image: /enrightward.github.io/assets/img/cross-entropy/convex.png
 ---
+
+![Desktop View](/assets/img/cross-entropy/convex.png)
 
 ## Introduction
 
