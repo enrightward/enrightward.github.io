@@ -1,14 +1,15 @@
 ---
-title: Order statistics — Part 2
+title: "Order statistics — Part 2: General formulae for PDFs and expectations"
 date: 2021-03-07
 categories: [statistics, order statistics]
-tags: [statistics, order statistics, uniform distribution, general formula]
+tags: [statistics, order statistics, uniform distribution]
 preview_image: /enrightward.github.io/assets/img/order-statistics/part2/dimprog.png
 ---
 
 ![Desktop View](/assets/img/order-statistics/part2/dimprog.png)
 
 ## 1. Introduction
+    
 
 In the [last post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/), we defined the _order statistics_ of a collection of iid random variables $$X_{1}, \ldots, X_{n}$$, to try and answer questions like "What's the expected value of $$\max( \{ X_{1}, \ldots, X_{n} \} )$$?", or more generally "what is $$\mathbb{E}[(X_{(k)})]$$?", where $$X_{(k)}$$ is defined by the property:
 

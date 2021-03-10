@@ -1,5 +1,5 @@
 ---
-title: Cross entropy — Part 1
+title: "Cross entropy — Part 1: Introduction and definitions"
 date: 2021-02-23
 categories: [statistics, entropy]
 tags: [statistics, entropy, cross entropy]

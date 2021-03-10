@@ -1,5 +1,5 @@
 ---
-title: Order statistics — Part 3
+title: "Order statistics — Part 3: Proof of expectation formula for uniform RVs"
 date: 2021-03-08
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, expectation formula]

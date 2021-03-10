@@ -1,5 +1,5 @@
 ---
-title: Cross entropy — Part 2
+title: "Cross entropy — Part 2: Convexity of the objective function"
 date: 2021-02-24
 categories: [statistics, entropy]
 tags: [statistics, cross entropy, softmax, convexity]

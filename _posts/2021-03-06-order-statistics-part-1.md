@@ -1,6 +1,6 @@
 ---
-title: Order statistics — Part 1
-date: 2021-03-07
+title: "Order statistics — Part 1: Introduction and definitions"
+date: 2021-03-06
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, FTC]
 preview_image: /enrightward.github.io/assets/img/order-statistics/part1/running-a-race.jpg
