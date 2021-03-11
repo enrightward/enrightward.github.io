@@ -10,7 +10,7 @@ preview_image: /enrightward.github.io/assets/img/order-statistics/part3/gamma.pn
 
 ## 1. Introduction
 
-In the [last post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/), we proved the following general general formulae, after conducting some numerical experiments to gain intuition:
+In the [last post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/), we proved the following general formulae, after conducting some numerical experiments to gain intuition:
 
 \begin{align}
 F_{X_{(k)}}(x) &= \sum_{j=k}^{n} \binom{n}{j} F_{X}(x)^{j} (1 - F_{X}(x))^{n-j}, \newline
