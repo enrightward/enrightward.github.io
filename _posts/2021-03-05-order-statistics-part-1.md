@@ -1,6 +1,6 @@
 ---
 title: "Order statistics — Part 1: Introduction and definitions"
-date: 2021-03-06
+date: 2021-03-05
 categories: [statistics, order statistics]
 tags: [statistics, order statistics, uniform distribution, FTC]
 preview_image: /enrightward.github.io/assets/img/order-statistics/part1/running-a-race.jpg
@@ -8,7 +8,7 @@ preview_image: /enrightward.github.io/assets/img/order-statistics/part1/running-
 
 ![Desktop View](/assets/img/order-statistics/part1/running-a-race.jpg)
 
-## Introduction
+## 1. Introduction
 
 On average, how tall is the tallest 8th grader in a class of 30 students, in the US? What is the value of the average winning bid in a [Vickery Auction](https://en.wikipedia.org/wiki/Vickrey_auction), where the highest bidder wins, but must pay only the second-highest bid? A common statistical approach here is:
 
@@ -16,17 +16,17 @@ On average, how tall is the tallest 8th grader in a class of 30 students, in the
 2. Model the underlying PDF as $$f$$, then;
 3. Compute _order statistics_ — defined rigorously in the next section — but for example, the expectation of the maximum (or second-largest, or third-largest) value of the $$X_{i}$$.
 
-## A toy problem
+## 2. A toy problem
 
 To investigate such questions, we'll start with a concrete, toy problem. Recall the uniform distribution $$U(0,1)$$ on the unit interval: Its PDF takes constant value $$1$$ on the closed interval $$[0, 1]$$, and is zero everywhere else. Consider the following toy question: Suppose $$X_{1}$$ and $$X_{2}$$ are random variables, independently sampled from $$U(0,1)$$. What is the expected value of the minimum of $$X_{1}$$ and $$X_{2}$$? What about the maximum? If there is a third such random variable $$X_{3}$$, how do these numbers change, and what's the expected middle value?
 
-## Outline
+## 3. Outline
 
 In this post, I will explore the simplest setting of these questions, where we have only two random variables $$X_{1}$$ and $$X_{2}$$, sampled from $$U(0,1)$$. I will do this first empirically, using numpy computations, then theoretically, using mathematics. These kinds of questions fall under the heading of [Order Statistics](https://en.wikipedia.org/wiki/Order_statistics).
 
-In the next post, I will discuss similar expectation results for the general case of $$n$$ iid random variables $$X_{1}, \ldots, X_{n}$$ and an arbitrary PDF $$f$$. It turns out we can write down a general formula for the expectation of $$k^{\textrm{th}}$$-largest of the $$X_{i}$$, provided we know the associated CDF $$F$$. This formula will be especially nice in the case where $$f$$ is the uniform distribution.
+In the [next post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/), I will discuss similar expectation results for the general case of $$n$$ iid random variables $$X_{1}, \ldots, X_{n}$$ and an arbitrary PDF $$f$$. It turns out we can write down a general formula for the expectation of $$k^{\textrm{th}}$$-largest of the $$X_{i}$$, provided we know the associated CDF $$F$$. This formula will be especially nice in the case where $$f$$ is the uniform distribution.
 
-## Notation
+## 4. Notation
 
 We define some general notation for convenience. For a set $$S = \{ X_{1}, \ldots, X_{n} \}$$ of iid random variables, say with arbitrary common PDF $$f$$, denote by $$X_{(1)}, \ldots, X_{(n)}$$ their rearrangement in ascending order:
 
@@ -68,7 +68,7 @@ def sample_mean_order_statistic(xs, k):
     return x_ks.mean()
 ```
 
-## A numerical investigation, for small $$n$$
+## 5. A numerical investigation, for small $$n$$
 
 We can use these two functions to estimate expected values for the $$X_{(k)}$$, for different values $$n$$, as follows:
 
@@ -95,8 +95,8 @@ print('E(min(X_1, X_2)) ~ {:.5f}'.format(Ex_1))
 print('E(max(X_1, X_2)) ~ {:.5f}'.format(Ex_2))
 ```
 
-    E(min(X_1, X_2)) ~ 0.33203
-    E(max(X_1, X_2)) ~ 0.66265
+    E(min(X_1, X_2)) ~ 0.33327
+    E(max(X_1, X_2)) ~ 0.66649
 
 
 A good guess might be that $$\mathbb{E}(X_{\textrm{min}}) = 1/3$$ and $$\mathbb{E}(X_{\textrm{max}}) = 2/3$$. This doesn't seem crazy: For one thing, it would mean $$\mathbb{E}(X_{\textrm{min}})$$ and $$\mathbb{E}(X_{\textrm{max}})$$ are equispaced along the unit interval. Equispacing is also consistent with the following observation: Since you can think of a single $$X_{1} \sim U(0, 1)$$ as a "very short" collection of random variables, with the property that $$X_{\textrm{min}} = X_{\textrm{max}} = X_{1}$$, we have:
@@ -137,9 +137,9 @@ Now let's use this function to estimate the order statistics on three random var
 Ex_ks = compute_expected_order_estimates(n=3, verbose=True)
 ```
 
-    E[X_(1)] ~ 0.25174
-    E[X_(2)] ~ 0.50066
-    E[X_(3)] ~ 0.75133
+    E[X_(1)] ~ 0.24874
+    E[X_(2)] ~ 0.50294
+    E[X_(3)] ~ 0.75110
 
 
 This time, it seems perhaps that
@@ -244,7 +244,7 @@ def multi_bar_plot(axs, func, fontsizefunc, colour, tickfontsize, titlefontsize)
         label_bars(ax, bars, value_format, **kwargs)
 ```
 
-## Plotting numerical results for $$1 \le n \le 9$$
+## 6. Plotting numerical results for $$1 \le n \le 9$$
 
 Now we display in barplots, for each $$1 \le n \le 9$$, estimates for the $$\mathbb{E}(X_{(k)})$$, for all $$1 \le k \le n$$.
 
@@ -264,11 +264,9 @@ titlefontsize = 25
 multi_bar_plot(axs, func, fontsizefunc, colour, tickfontsize, titlefontsize)
 ```
 
-
 ![png](/assets/img/order-statistics/part1/order_stats_bar_plots.png)
 
-
-## A mathematical analysis, for small $$n$$
+## 7. A mathematical analysis, for small $$n$$
 
 The barplots above look equispaced in all cases — the hypothesis that:
 
@@ -358,7 +356,7 @@ def plot_2d(region_samples, dotwidth, limit):
     plt.show()
 ```
 
-## Visualising $$\mathbb{Pr}(X_{(k)} \le x)$$ in the plane
+## 8. Visualising $$\mathbb{Pr}(X_{(k)} \le x)$$ in the plane
 
 Let's use the above code to visualise the regions where $$X_{(k)} \le x$$, for $$k = 1, 2$$. The areas of these regions will be the probabilities $$\mathbb{Pr}(X_{(k)} \le x)$$. 
 
@@ -386,8 +384,7 @@ plot_2d(region_samples, dotwidth, limit)
 
 ![png](/assets/img/order-statistics/part1/order_stats_2d.png)
 
-
-## Analysing the visulation: Computing CDFs
+## 9. Analysing the visulation: Computing CDFs
 
 In the scatter plot above, we uniformly sampled 10,000 points $$P = (x_{1}, x_{2})$$ from the unit square, and coloured them according to whether none, only one, or both of the coordinates $$x_{1}$$ and $$x_{2}$$ of $$P$$ were less than the (arbitrarily-chosen) cutoff value $$x = 0.3$$. Specifically:
 
@@ -427,7 +424,7 @@ This is a non-overlapping, exhaustive list arrangements of $$X_{1}, X_{2}$$ and 
 \mathbb{Pr}(X_{(1)} \le x) = A_{1} + A_{2} = 2x(1-x) + x^{2} = 2x - x^{2}.
 \end{align}
 
-## Deriving PDFs from CDFs using the FTC
+## 10. Deriving PDFs from CDFs using the FTC
 
 We have just computed:
 
@@ -452,8 +449,12 @@ and hence that
 \left \lbrack \frac{2x^{3}}{3} \right \rbrack_{0}^{1} = \frac{2}{3} \cdot
 \end{align}
 
-## Next up
+## 11. Round up
 
-Next post, I will write down a formula $$\mathbb{E}[X_{(k)}]$$ for arbitrary $$n$$, and for any $$1 \le k \le n$$, provided we know the CDF $$F$$ associated to $$X_{1}, \ldots, X_{n}$$.
+In this post, we defined _order statistics_ for $$n$$ iid random variables, then explored numerically, using numpy, what the expectation of such statistics might be if the underlying distribution is uniform. Based on this, we conjectured that:
 
+\begin{align}
+\mathbb{E} \left \lbrack X_{(k)} \right \rbrack = \frac{k}{n+1},
+\end{align}
 
+for all $$n$$ and $$k$$. We verified this mathematically for $$n = 1, 2$$. In the [next post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/), I will derive a formula for $$\mathbb{E}[X_{(k)}]$$ for arbitrary $$n$$, and for any $$1 \le k \le n$$, and for any underlying PDF $$f$$, provided we know the associated CDF $$F$$. This general formula will be used in the [post after next](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-3/) to prove the above expectation formula in the case where the $$X_{i}$$ are uniform.

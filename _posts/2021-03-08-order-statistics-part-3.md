@@ -2,7 +2,7 @@
 title: "Order statistics — Part 3: Proof of expectation formula for uniform RVs"
 date: 2021-03-08
 categories: [statistics, order statistics]
-tags: [statistics, order statistics, uniform distribution, expectation formula]
+tags: [statistics, order statistics, uniform distribution, expectation formula, gamma function, beta function]
 preview_image: /enrightward.github.io/assets/img/order-statistics/part3/gamma.png
 ---
 

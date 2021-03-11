@@ -2,14 +2,13 @@
 title: "Order statistics — Part 2: General formulae for PDFs and expectations"
 date: 2021-03-07
 categories: [statistics, order statistics]
-tags: [statistics, order statistics, uniform distribution]
+tags: [statistics, order statistics, uniform distribution, general formula]
 preview_image: /enrightward.github.io/assets/img/order-statistics/part2/dimprog.png
 ---
 
 ![Desktop View](/assets/img/order-statistics/part2/dimprog.png)
 
 ## 1. Introduction
-    
 
 In the [last post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/), we defined the _order statistics_ of a collection of iid random variables $$X_{1}, \ldots, X_{n}$$, to try and answer questions like "What's the expected value of $$\max( \{ X_{1}, \ldots, X_{n} \} )$$?", or more generally "what is $$\mathbb{E}[(X_{(k)})]$$?", where $$X_{(k)}$$ is defined by the property:
 
@@ -23,9 +22,9 @@ We investigated, in the special case where $$X_{i} \sim U(0, 1)$$, the values of
 \mathbb{E}[(X_{(k)})] = \frac{k}{n+1} \cdot
 \end{equation}
 
-We also proved this conjecture mathematically for $$n = 1, 2$$, in part using a 2D scatter plot understand the CDF $$F$$ in the two-variable case, then passing to the PDF $$f$$ by using the [Fundamental Theorem of Calculus](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus). By the end of this post, we will generalise these results, deriving a formula for $$\mathbb{E}[(X_{(k)})]$$ for any $$n$$ and for all $$1 \le k \le n$$, for arbitrary common PDF $$f$$ of the $$X_{i}$$. This general formula will not be a closed formula — it will be an integral over a summation — but it will depend only on $$n$$, the PDF $$f$$ and the CDF $$F$$. In the special case where the $$X_{i}$$ are uniformly distributed on the unit interval, it will allow us to recover the formula $$\mathbb{E}[(X_{(k)})] = \frac{k}{n+1}$$. However, we will wait to the next post to recover this formula.
+We also proved this conjecture mathematically for $$n = 1, 2$$, in part using a 2D scatter plot understand the CDF $$F$$ in the two-variable case, then passing to the PDF $$f$$ by using the [Fundamental Theorem of Calculus](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus). By the end of this post, we will generalise these results, deriving a formula for $$\mathbb{E}[(X_{(k)})]$$ for any $$n$$ and for all $$1 \le k \le n$$, for arbitrary common PDF $$f$$ of the $$X_{i}$$. This general formula will not be a closed formula — it will be an integral over a summation — but it will depend only on $$n$$, the PDF $$f$$ and the CDF $$F$$. In the special case where the $$X_{i}$$ are uniformly distributed on the unit interval, it will allow us to recover the formula $$\mathbb{E}[(X_{(k)})] = \frac{k}{n+1}$$. However, we will wait to the [next post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-3/) to recover this formula.
 
-Before attacking the general proof, however, we will examine one last special case using code: Suppose we have three variables $$X_{1}, X_{2}$$ and $$X_{3}$$ all $$\sim U(0, 1)$$.
+Before attacking the general proof, we will examine one last special case using code: Consider three variables $$X_{1}, X_{2}$$ and $$X_{3}$$ all $$\sim U(0, 1)$$.
 
 
 ```python
@@ -123,9 +122,7 @@ phi = 45
 plot_3d(region_samples, dotwidth, limit, theta, phi)
 ```
 
-
 ![png](/assets/img/order-statistics/part2/order_stats_3d_front.png)
-
 
 Let's show the same plot, but looking back from the opposite side of the far corner:
 
@@ -136,9 +133,7 @@ phi = 225
 plot_3d(region_samples, dotwidth, limit, theta, phi)
 ```
 
-
 ![png](/assets/img/order-statistics/part2/order_stats_3d_back.png)
-
 
 ## 3. Analysing the visulation: Computing CDFs
 
@@ -146,7 +141,7 @@ In the scatter plot above, we uniformly sampled 100,000 points $$P = (x_{1}, x_{
 
 1. The <span style="color:cyan">blue cube region $$R_{3}(x)$$</span> ("the fattened origin") in the back corner is defined by the condition: 
 \begin{equation}
-R_{3}(x) := \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{2}, x_{3} \le x \},
+R_{3}(x) := \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{2}, x_{3} \le x \right\\},
 \end{equation}
 so it follows
 \begin{equation}
@@ -155,14 +150,14 @@ so it follows
 \end{equation}
 2. The <span style="color:green">three green rectangular prisms</span> (the "fattened axes") are defined by the conditions:
 \begin{align}
-R_{2}^{1}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{2}, x_{3} \le x \le x_{1} \}, \newline
-R_{2}^{2}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{3} \le x \le x_{2} \}, \newline
-R_{2}^{3}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{2} \le x \le x_{3} \}.
+R_{2}^{1}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{2}, x_{3} \le x \le x_{1} \right\\}, \newline
+R_{2}^{2}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{3} \le x \le x_{2} \right\\}, \newline
+R_{2}^{3}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1}, x_{2} \le x \le x_{3} \right\\}.
 \end{align}
 The union $$R_{2}(x)$$ of these three sets is:
 \begin{align}
-R_{2}(x) := \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{i}, x_{j} \le x \le x_{k} 
-\textrm{ for } 1 \le i, j, k \le 3 \}.
+R_{2}(x) := \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{i}, x_{j} \le x \le x_{k} 
+\textrm{ for } 1 \le i, j, k \le 3 \right\\}.
 \end{align}
 For any of the $$R_{2}^{i}(x)$$, two of the three coordinates are confined to an $$x \times x$$ square, and the last one takes values between $$x$$ and $$1$$. So, $$\textrm{vol}(R_{2}^{i}(x)) = x^{2}(1-x)$$, implying that 
 \begin{align}
@@ -170,14 +165,14 @@ For any of the $$R_{2}^{i}(x)$$, two of the three coordinates are confined to an
 \end{align}
 3. The <span style="color:orange">three orange pieces of toast</span> (the "fattened planes") are defined by the conditions:
 \begin{align}
-R_{1}^{1}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1} \le x \le x_{2}, x_{3} \}, \newline
-R_{1}^{2}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{2} \le x \le x_{1}, x_{3} \}, \newline
-R_{1}^{3}(x) &:= \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{3} \le x \le x_{1}, x_{2} \}.
+R_{1}^{1}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{1} \le x \le x_{2}, x_{3} \right\\}, \newline
+R_{1}^{2}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{2} \le x \le x_{1}, x_{3} \right\\}, \newline
+R_{1}^{3}(x) &:= \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{3} \le x \le x_{1}, x_{2} \right\\}.
 \end{align}
 The union $$R_{1}(x)$$ of these three sets is:
 \begin{align}
-R_{2}(x) := \{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{i} \le x \le x_{j}, \le x_{k} 
-\textrm{ for } 1 \le i, j, k \le 3 \}.
+R_{2}(x) := \left\\{ (x_{1}, x_{2}, x_{3}) \in \mathbb{R}^{3} \mid x_{i} \le x \le x_{j}, \le x_{k} 
+\textrm{ for } 1 \le i, j, k \le 3 \right\\}.
 \end{align}
 For any of the $$R_{1}^{i}(x)$$, two of the three coordinates are confined to an $$(1 - x) \times (1 - x)$$ square, and the last one is at most $$x$$. It follows $$\textrm{vol}(R_{1}^{i}(x)) = x(1-x)^{2}$$, implying that 
 \begin{align}
@@ -220,7 +215,7 @@ F_{X_{(2)}}(x) &= \mathbb{Pr}(X_{(2)} \le x) = 3x^{2} - 2x^{3}, \newline
 F_{X_{(3)}}(x) &= \mathbb{Pr}(X_{(3)} \le x) = x^{3}.
 \end{align}
 
-By the FTC, if follows
+By the FTC, if follows that:
 
 \begin{align}
 f_{X_{(1)}}(x) &= \frac{d}{dx} \left( F_{X_{(1)}}(x) \right) = 3x^{2} - 6x + 3, \newline
@@ -228,7 +223,7 @@ f_{X_{(2)}}(x) &= \frac{d}{dx} \left( F_{X_{(2)}}(x) \right) = 6x - 6x^{2}, \new
 f_{X_{(3)}}(x) &= \frac{d}{dx} \left( F_{X_{(3)}}(x) \right) = 3x^{2}.
 \end{align}
 
-and hence that
+As a result, we have:
 
 \begin{align}
 \mathbb{E}(X_{(1)}) &= \int_{0}^{1} x \, f_{X_{(1)}}(x) \, dx = \int_{0}^{1} (3x^{3} - 6x^{2} + 3x) \, dx = 
@@ -360,10 +355,12 @@ f_{X_{(k)}}(x) &= k \binom{n}{k} f_{X}(x) \cdot F_{X}(x)^{k-1} \, (1 - F_{X}(x))
 k \binom{n}{k} \int_{0}^{1} x \cdot f_{X}(x) \cdot F_{X}(x)^{k-1} \, (1 - F_{X}(x))^{n-k} \, dx,
 \end{align}
 
-which depend only on $$n, k, f_{X} and F_{X}$$. Next post we'll round out the exposition of $$k^{\textrm{th}}$$ order statistics by specialising these general formulae to the case of the uniform distribution $$U(0, 1)$$. We will show that:
+which depend only on $$n, k, f_{X}$$ and $$F_{X}$$. [Next post](https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-3/) we'll round out the exposition of $$k^{\textrm{th}}$$ order statistics by specialising these general formulae to the case of the uniform distribution $$U(0, 1)$$. We will show that:
 
 \begin{align}
 F_{X_{(k)}}(x) &= \sum_{j=k}^{n} \binom{n}{j} x^{j} (1 - x)^{n-j}, \newline
 f_{X_{(k)}}(x) &= k \binom{n}{k} x^{k-1} \, (1 - x)^{n-k}, \newline
 \mathbb{E} \left \lbrack X_{(k)} \right \rbrack &= \frac{k}{n+1} \cdot
 \end{align}
+
+The proof of the expectation formula will use [beta functions](https://en.wikipedia.org/wiki/Beta_function) and [gamma functions](https://en.wikipedia.org/wiki/Gamma_function), but we will define these and prove the necessary properties inline.
