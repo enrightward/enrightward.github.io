@@ -27,7 +27,7 @@ f_{X_{(k)}}(x) &= k \binom{n}{k} x^{k-1} \, (1 - x)^{n-k}, \newline
 \mathbb{E} \left \lbrack X_{(k)} \right \rbrack &= \frac{k}{n+1} \cdot
 \end{align}
 
-This post is purely theoretical, and has no code. The mathematical tools we use are the beta and gamma functions, defined and discussed below.
+This post is purely theoretical, and has no code. The mathematical tools we use are the beta and gamma functions, introduced below.
 
 ## 2. Specialising the formulae to $$U(0, 1)$$
 
@@ -105,7 +105,7 @@ We show this using the definite integral version of the integration by parts for
 \int_{a}^{b} u \, dv = \left \lbrack uv \right \rbrack_{a}^{b} - \int_{a}^{b} v \, du, 
 \end{align}
 
-with $$u = x^{z-1}$$ and $$dv = e^{-x} dx$$, implying that $$du = (z-1)x^{z-2} dx$$ and $$v = -e^{-x}$$. Note this formula holds also in the case where $$a$$ or $$b$$ is $$\pm \infty$$, provided we interpret the term $$\left \lbrack uv \right \rbrack_{a}^{b}$$ as expressing a limit. We have:
+with $$u = x^{z-1}$$ and $$dv = e^{-x} dx$$, implying that $$du = (z-1)x^{z-2} dx$$ and $$v = -e^{-x}$$. Note this formula holds also in the case where $$a$$ or $$b$$ is $$\pm \infty$$, provided we interpret the term $$\left \lbrack uv \right \rbrack_{a}^{b}$$ as expressing the appropriate limit(s). We have:
 
 \begin{align}
 \Gamma(z) &= \int_{0}^{\infty} x^{z-1} e^{-x} \, dx \newline
@@ -114,9 +114,9 @@ with $$u = x^{z-1}$$ and $$dv = e^{-x} dx$$, implying that $$du = (z-1)x^{z-2} d
 &= (z-1)\Gamma(z-1).
 \end{align}
 
-Now we prove the formula connecting $$B(z, w)$$ and $$\Gamma(z)$$. I'm taking this proof [from Wikipedia](https://en.wikipedia.org/wiki/Beta_function#Relationship_to_the_gamma_function) and filling in details on the variable substitution using [these lecture notes](https://homepage.tudelft.nl/11r49/documents/wi4006/gammabeta.pdf) (Theorem 2, page 3). Note: Curiously, although the Wikipedia article cites Emil Artin's book [Gamma Functions](https://web.archive.org/web/20161112081854/http://www.plouffe.fr/simon/math/Artin%20E.%20The%20Gamma%20Function%20(1931)(23s).pdf), pages 18-19, Artin's proof is not the one written down in Wikipedia.
+Now we prove the formula connecting $$B(z, w)$$ and $$\Gamma(z)$$. I'm taking this proof [from Wikipedia](https://en.wikipedia.org/wiki/Beta_function#Relationship_to_the_gamma_function) and filling in details on the variable substitution using [these lecture notes](https://homepage.tudelft.nl/11r49/documents/wi4006/gammabeta.pdf) (Theorem 2, page 3). Note: Curiously, although the Wikipedia article cites Emil Artin's book [Gamma Functions](https://web.archive.org/web/20161112081854/http://www.plouffe.fr/simon/math/Artin%20E.%20The%20Gamma%20Function%20(1931)(23s).pdf), pages 18-19, Artin's proof is not the one written down there.
 
-In any case, the argument goes like this:
+In any case, the argument begins like this:
 
 \begin{align}
 \Gamma(z) \, \Gamma(w) &= \int_{x=0}^{\infty} x^{z-1} e^{-x} \, dx \int_{y=0}^{\infty} y^{w-1} e^{-y} \, dy \newline
@@ -143,7 +143,7 @@ with determinant $$\det(J) = -st - s(1-t) = -s$$. It follows that
 dx \, dy = \left\| \det{J} \right\| ds \, dt = s \, ds \, dt. 
 \end{align}
 
-Observe now that since $$x$$ and $$y$$ range over $$[0, \infty)$$ and $$x + y = st + s(1-t) = s$$, then $$s$$ must range over 
+Observe that since $$x$$ and $$y$$ range over $$[0, \infty)$$ and $$x + y = st + s(1-t) = s$$, then $$s$$ must range over 
 $$[0, \infty)$$, too. On the other hand,
 
 \begin{align}
@@ -162,7 +162,7 @@ so $$t$$ ranges only over the unit interval $$[0, 1]$$. Making these substitutio
 &= B(z, w) \cdot \Gamma(z+w).
 \end{align}
 
-Dividing both sides of this equation by $$\Gamma(z+w)$$ now yields the result.
+Dividing both sides of this equation by $$\Gamma(z+w)$$ now gives the result.
 
 ## 5. Roundup
 

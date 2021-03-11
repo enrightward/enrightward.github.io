@@ -116,6 +116,6 @@ v \nabla^{2} H(p, q) v^{t} = v \, \textrm{diag}(Q) v^{t} - v QQ^{t} v^{t} = \\
 \end{equation}
 Here, each summand $$v_{i}^{2} q(x_{i}) (1 - q(x_{i}))$$ is non-negative, being the product of a square, a probability and its complementary probability. It follows that the whole sum is non-negative. Since $$p$$ and $$q$$ have no zero probabilities by assumption, this sum can be zero only if each $$v_{i}$$ is zero, so $$\nabla^{2} H(p, q)$$ is positive definite and the minimum $$q = p$$ is global.
 
-### 5. Roundup 
+## 5. Roundup 
 
 We introduced the softmax function, which can differentiably paramatrise any discrete PDF with no zero probabilities. Then, using the softmax parametrisation, we showed that the $$p \mapsto H(p, q)$$ is a convex function. This convexity is important because, as noted in the [previous post](https://enrightward.github.io/enrightward.github.io/posts/cross-entropy-part-1/), a common machine learning task is to update a parametrised PDF $$q$$ to more closely resemble an idealised PDF $$p$$ implicit in some data set — language modelling often uses this technique, for example. The above convexity result, combined with last post's proof that $$q \mapsto H(p, q)$$ achieves a minimum at $$q = p$$, implies this function can be optimised using a gradient descent algorithm.
