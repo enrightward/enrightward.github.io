@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en-US" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-cache-enabled" content="false"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="Order statistics — Part 1: Introduction and definitions" /><meta name="author" content="Stephen Enright-Ward" /><meta property="og:locale" content="en_US" /><meta name="description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><meta property="og:description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><link rel="canonical" href="https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/" /><meta property="og:url" content="https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/" /><meta property="og:site_name" content="Logical Quantifier" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-03-05T00:00:00+01:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Order statistics — Part 1: Introduction and definitions" /><meta name="twitter:site" content="@" /><meta name="twitter:creator" content="@Stephen Enright-Ward" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.","url":"https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/","@type":"BlogPosting","headline":"Order statistics — Part 1: Introduction and definitions","dateModified":"2021-03-05T00:00:00+01:00","datePublished":"2021-03-05T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/"},"author":{"@type":"Person","name":"Stephen Enright-Ward"},"@context":"https://schema.org"}</script><title>Order statistics — Part 1: Introduction and definitions | Logical Quantifier</title><link rel="shortcut icon" href="/enrightward.github.io/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/enrightward.github.io/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/enrightward.github.io/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/enrightward.github.io/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/enrightward.github.io/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/enrightward.github.io/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/enrightward.github.io/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/enrightward.github.io/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/enrightward.github.io/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/enrightward.github.io/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/enrightward.github.io/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/enrightward.github.io/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/enrightward.github.io/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/enrightward.github.io/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/enrightward.github.io/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/enrightward.github.io/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/enrightward.github.io/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/enrightward.github.io/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/enrightward.github.io/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/enrightward.github.io/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="stylesheet" href="/enrightward.github.io/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/enrightward.github.io/assets/js/dist/post.min.js"></script> <script defer src="/enrightward.github.io/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/enrightward.github.io/" alt="avatar" class="mx-auto"> <img src="https://cdn.jsdelivr.net/gh/enrightward/blog-images/abacus.svg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/enrightward.github.io/">Logical Quantifier</a></div><div class="site-subtitle font-italic">A statistics, machine learning and mathematics blog</div></div><ul class="w-100"><li class="nav-item"> <a href="/enrightward.github.io/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/enrightward.github.io/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/enrightward.github.io/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/enrightward.github.io/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/enrightward.github.io/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/enrightward" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/enrightward.github.io/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/enrightward.github.io/"> Posts </a> </span> <span>Order statistics — Part 1: Introduction and definitions</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Order statistics — Part 1: Introduction and definitions</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Mar 5, 2021, 12:00 AM +0100" > Mar 5 <i class="unloaded">2021-03-05T00:00:00+01:00</i> </span> by <span class="author"> Stephen Enright-Ward </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3209 words">17 min</span></div></div><div class="post-content"><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/enrightward.github.io/assets/img/order-statistics/part1/running-a-race.jpg" alt="Desktop View" /></p><h2 id="1-introduction">1. Introduction</h2><p>On average, how tall is the tallest 8th grader in a class of 30 students, in the US? What is the value of the average winning bid in a <a href="https://en.wikipedia.org/wiki/Vickrey_auction">Vickery Auction</a>, where the highest bidder wins, but must pay only the second-highest bid? A common statistical approach here is:</p><ol><li>Assume the empirical data \(x_{1}, \ldots, x_{n}\) (heights, bids, etc.) are sampled from iid random variables \(X_{1}, \ldots, X_{n}\);<li>Model the underlying PDF as \(f\), then;<li>Compute <em>order statistics</em> — defined rigorously in the next section — but for example, the expectation of the maximum (or second-largest, or third-largest) value of the \(X_{i}\).</ol><h2 id="2-a-toy-problem">2. A toy problem</h2><p>To investigate such questions, we’ll start with a concrete, toy problem. Recall the uniform distribution \(U(0,1)\) on the unit interval: Its PDF takes constant value \(1\) on the closed interval \([0, 1]\), and is zero everywhere else. Consider the following toy question: Suppose \(X_{1}\) and \(X_{2}\) are random variables, independently sampled from \(U(0,1)\). What is the expected value of the minimum of \(X_{1}\) and \(X_{2}\)? What about the maximum? If there is a third such random variable \(X_{3}\), how do these numbers change, and what’s the expected middle value?</p><h2 id="3-outline">3. Outline</h2><p>In this post, I will explore the simplest setting of these questions, where we have only two random variables \(X_{1}\) and \(X_{2}\), sampled from \(U(0,1)\). I will do this first empirically, using numpy computations, then theoretically, using mathematics. These kinds of questions fall under the heading of <a href="https://en.wikipedia.org/wiki/Order_statistics">Order Statistics</a>.</p><p>In the <a href="https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/">next post</a>, I will discuss similar expectation results for the general case of \(n\) iid random variables \(X_{1}, \ldots, X_{n}\) and an arbitrary PDF \(f\). It turns out we can write down a general formula for the expectation of \(k^{\textrm{th}}\)-largest of the \(X_{i}\), provided we know the associated CDF \(F\). This formula will be especially nice in the case where \(f\) is the uniform distribution.</p><h2 id="4-notation">4. Notation</h2><p>We define some general notation for convenience. For a set \(S = \{ X_{1}, \ldots, X_{n} \}\) of iid random variables, say with arbitrary common PDF \(f\), denote by \(X_{(1)}, \ldots, X_{(n)}\) their rearrangement in ascending order:</p><p>\begin{equation} X_{(1)} \le X_{(2)} \le \ldots \le X_{(n)}. \end{equation}</p><p>Thus, in particular, \(X_{(1)} = \min(S)\) and \(X_{(n)} = \max(S)\). We call \(X_{(k)}\) the <em>\(k\)-th order statistic</em>. Our goal will be to compute formulae for \(\mathbb{E}(X_{(k)})\), for any \(k\). It will turn out we can do this for general \(f\), provided we know the associated CDF, \(F\).</p><p>We’ll begin, however, with some concrete calculations of sample \(k\)-th order statistics in the case where \(f \sim U(0, 1)\). As a first step, we define two functions: One to repeately sample \(n\)-tuples from \(U(0, 1)\), for arbitary \(n\), and another to estimate the expectations of order statistics associated to these samples.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">sample_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="s">"""Sample an `n`-tuple `m` times from the 
+    uniform distribution on the unit interval"""</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">sample_mean_order_statistic</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="s">"""Returns the mean of the `k`-th (sample) order statistic of `xs`. 
+    Here, `xs` is a list of np.arrays, each of the same length `n`. 
+    The positive integer `k` must satisfy 1 &lt;= k &lt;= `n`."""</span>
+    <span class="c1"># Require every array `x` in `samples` has the same length `n`.
+</span>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="n">n</span><span class="p">]))</span>
+    <span class="c1"># Require `k` is between 1 and `n`.
+</span>    <span class="k">assert</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">x_ks</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
+        <span class="c1"># sort each x in ascending order to find x_(k) 
+</span>        <span class="c1"># NB: Array zero indexing =&gt; map k to k-1.
+</span>        <span class="n">x_k</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">x_ks</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        
+    <span class="n">x_ks</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_ks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_ks</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></table></code></div></div><h2 id="5-a-numerical-investigation-for-small-n">5. A numerical investigation, for small \(n\)</h2><p>We can use these two functions to estimate expected values for the \(X_{(k)}\), for different values \(n\), as follows:</p><ol><li>Sample \(m\) lots of an \(n\)-tuple \((x_{1}, \ldots, x_{n})\), where each \(x_{i}\) is sampled from the uniform distribution on the unit interval, using the function <code class="language-plaintext highlighter-rouge">sample_uniform</code>.<li>Estimate the \(\mathbb{E}(X_{(k)})\) via sample means, using the function <code class="language-plaintext highlighter-rouge">sample_mean_order_statistic</code>.</ol><p>The idea is that if we choose the number of samples “\(m\)” from Step 1 to be large enough, the estimates in Step 2 will be as accurate as we like.</p><p>As a first application of this two-step procedure, let’s try to answer, empirically, the first toy question from the introduction: What are the expected maximum and minimum values of two independent random variables \(X_{1}, X_{2} \sim U(0, 1)\)?</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="c1"># lots of samples for accurate sample expectations
+</span><span class="n">m</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c1"># try n = 2
+</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="n">Ex_1</span> <span class="o">=</span> <span class="n">sample_mean_order_statistic</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Ex_2</span> <span class="o">=</span> <span class="n">sample_mean_order_statistic</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'E(min(X_1, X_2)) ~ {:.5f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">Ex_1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'E(max(X_1, X_2)) ~ {:.5f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">Ex_2</span><span class="p">))</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>E(min(X_1, X_2)) ~ 0.33327
+E(max(X_1, X_2)) ~ 0.66649
+</pre></table></code></div></div><p>A good guess might be that \(\mathbb{E}(X_{\textrm{min}}) = 1/3\) and \(\mathbb{E}(X_{\textrm{max}}) = 2/3\). This doesn’t seem crazy: For one thing, it would mean \(\mathbb{E}(X_{\textrm{min}})\) and \(\mathbb{E}(X_{\textrm{max}})\) are equispaced along the unit interval. Equispacing is also consistent with the following observation: Since you can think of a single \(X_{1} \sim U(0, 1)\) as a “very short” collection of random variables, with the property that \(X_{\textrm{min}} = X_{\textrm{max}} = X_{1}\), we have:</p><p>\begin{align} \mathbb{E}(X_{\textrm{min}}) = \mathbb{E}(X_{1}) = \mathbb{E}(X_{\textrm{max}}) = 1/2. \end{align}</p><p>That is, \(\mathbb{E}(X_{1})\) partitions \([0, 1]\) into two equal subintervals. Does this equispacing story generalise to \(n\) variables? Let’s push on and repeat the numerical experiment, this time with three random variables \(X_{1}, X_{2}\) and \(X_{3}\). For convenience, I’ll also wrap the preceding cell in a function, so in future I can compute and print such estimates in one line of code.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">compute_expected_order_estimates</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="s">"""Compute, and optionally print the estimated expected 
+    values for the kth order statistics of `n` independent 
+    random variables on U(0, 1)."""</span>
+    
+    <span class="c1"># We'll fix `m` to be large.
+</span>    <span class="n">m</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">Ex_ks</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Estimate and (optionally) print statistics.
+</span>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">Ex_k</span> <span class="o">=</span> <span class="n">sample_mean_order_statistic</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">Ex_ks</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ex_k</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'E[X_({})] ~ {:.5f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">Ex_k</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="n">Ex_ks</span>
+</pre></table></code></div></div><p>Now let’s use this function to estimate the order statistics on three random variables:</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="n">Ex_ks</span> <span class="o">=</span> <span class="n">compute_expected_order_estimates</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>E[X_(1)] ~ 0.24874
+E[X_(2)] ~ 0.50294
+E[X_(3)] ~ 0.75110
+</pre></table></code></div></div><p>This time, it seems perhaps that</p><p>\begin{align} \mathbb{E}(X_{(1)}) = \frac{1}{4}, \quad \mathbb{E}(X_{(2)}) = \frac{1}{2} \quad \textrm{and} \quad \mathbb{E}(X_{(3)}) = \frac{3}{4}, \end{align}</p><p>also an equispaced pattern along \([0, 1]\). It’s tempting to conjecture that for \(n\) random variables \(X_{1}, \ldots, X_{n}\), the expecations of the \(k\)-th order statistics \(X_{(1)}, \ldots, X_{(n)}\) partition the unit interval into \(n+1\) equal subintervals. If so, we would have:</p><p>\begin{align} \mathbb{E}(X_{(k)}) = \frac{k}{n+1}, \quad \textrm{for all} \quad 1 \le k \le n. \end{align}</p><p>To gain confidence in this hypothesis, I’ll repeat the calculation one final time, for a slightly larger range of \(n\) values. To make the results more readable, I’ll display the esimated \(\mathbb{E}(X_{(k)})\) values in a collection of bar plots, one for each \(n\), rather than just spam the screen with printed floats. To this end, the next cell defines “boilerplate” plotting code. Some attribution is in order: The <code class="language-plaintext highlighter-rouge">label_bars</code> code, which prints the values of each bar in a bar chart, is copy-pasted verbatim from <a href="https://stackoverflow.com/users/7066758/saturnfromtitan">SaturnFromTitan</a>’s answer to a <a href="https://stackoverflow.com/questions/30228069/how-to-display-the-value-of-the-bar-on-each-bar-with-pyplot-barh">StackOverflow question</a> on barplot labelling.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="k">def</span> <span class="nf">set_ax_colour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colour</span><span class="p">):</span>
+    <span class="s">"""Set the spine, label and ticks of the 
+    axis colour to `colour`"""</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'bottom'</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'top'</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'left'</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'right'</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">label_bars</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">text_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="s">"""
+    Attaches a label on every bar of a regular or horizontal bar chart
+    """</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">bar</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">]</span>
+    <span class="n">y_is_constant</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">)</span>  <span class="c1"># -&gt; regular bar chart, since all all bars start on the same y level (0)
+</span>
+    <span class="k">if</span> <span class="n">y_is_constant</span><span class="p">:</span>
+        <span class="n">_label_bar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">text_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_label_barh</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">text_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_label_bar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">text_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="s">"""
+    Attach a text label to each bar displaying its y value
+    """</span>
+    <span class="n">max_y_value</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">inside_distance</span> <span class="o">=</span> <span class="n">max_y_value</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">outside_distance</span> <span class="o">=</span> <span class="n">max_y_value</span> <span class="o">*</span> <span class="mf">0.01</span>
+
+    <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text_format</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="n">get_height</span><span class="p">())</span>
+        <span class="n">text_x</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">is_inside</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">max_y_value</span> <span class="o">*</span> <span class="mf">0.15</span>
+        
+        <span class="k">if</span> <span class="n">is_inside</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s">'white'</span>
+            <span class="n">text_y</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">-</span> <span class="n">inside_distance</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s">'black'</span>
+            <span class="n">text_y</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="n">outside_distance</span>
+
+        <span class="n">ax</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'bottom'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_label_barh</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">text_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="s">"""
+    Attach a text label to each bar displaying its y value
+    Note: label always outside. otherwise it's too hard to control as numbers can be very long
+    """</span>
+    <span class="n">max_x_value</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">get_xlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">max_x_value</span> <span class="o">*</span> <span class="mf">0.0025</span>
+
+    <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text_format</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="n">get_width</span><span class="p">())</span>
+        <span class="n">text_x</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="n">distance</span>
+        <span class="n">text_y</span> <span class="o">=</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="p">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>   
+
+<span class="k">def</span> <span class="nf">multi_bar_plot</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">fontsizefunc</span><span class="p">,</span> <span class="n">colour</span><span class="p">,</span> <span class="n">tickfontsize</span><span class="p">,</span> <span class="n">titlefontsize</span><span class="p">):</span>
+    <span class="s">"""Wrapper function to plot the output of `func` 
+    on matplotlib axes `axs`."""</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="p">):</span>
+        <span class="n">set_ax_colour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colour</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">x_ticks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">bars</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s">'center'</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'n = {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">titlefontsize</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>   
+        <span class="n">ax</span><span class="p">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">tickfontsize</span><span class="p">)</span>
+        <span class="n">value_format</span> <span class="o">=</span> <span class="s">'{:.2}'</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">'fontweight'</span><span class="p">:</span> <span class="s">'bold'</span><span class="p">,</span> <span class="s">'fontsize'</span><span class="p">:</span> <span class="n">fontsizefunc</span><span class="p">(</span><span class="n">n</span><span class="p">)}</span>
+        <span class="n">label_bars</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">value_format</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></table></code></div></div><h2 id="6-plotting-numerical-results-for-1-le-n-le-9">6. Plotting numerical results for \(1 \le n \le 9\)</h2><p>Now we display in barplots, for each \(1 \le n \le 9\), estimates for the \(\mathbb{E}(X_{(k)})\), for all \(1 \le k \le n\).</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="n">height</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="p">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">colour</span> <span class="o">=</span> <span class="s">'white'</span>
+<span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">compute_expected_order_estimates</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">fontsizefunc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">40</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">tickfontsize</span> <span class="o">=</span> <span class="mi">15</span> 
+<span class="n">titlefontsize</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">multi_bar_plot</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">fontsizefunc</span><span class="p">,</span> <span class="n">colour</span><span class="p">,</span> <span class="n">tickfontsize</span><span class="p">,</span> <span class="n">titlefontsize</span><span class="p">)</span>
+</pre></table></code></div></div><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/enrightward.github.io/assets/img/order-statistics/part1/order_stats_bar_plots.png" alt="png" /></p><h2 id="7-a-mathematical-analysis-for-small-n">7. A mathematical analysis, for small \(n\)</h2><p>The barplots above look equispaced in all cases — the hypothesis that:</p><p>\begin{align} \mathbb{E}(X_{(k)}) = \frac{k}{n+1} \end{align}</p><p>is looking good, experimentally. How can we prove it mathematically? Let’s begin by returning to small values of \(n\). In the case \(n = 1\), it amounts to saying that the expectation of \(X_{1} \sim U(0, 1)\) is \(1/2\), as we observed above. This is easily shown: Recalling that the associated PDF \(f_{X_{1}}(x)\) is equal to \(1\) on \([0, 1]\) and zero everywhere else, we have, by definition of expectation:</p><p>\begin{align} \mathbb{E}(X_{1}) = \int_{0}^{1} x \, f_{X_{1}}(x) \, dx = \int_{0}^{1} x \, dx = \left \lbrack \frac{x^{2}}{2} \right \rbrack_{0}^{1} = \frac{1}{2} \cdot \end{align}</p><p>Consider now the case \(n = 2\), where \(X_{1}, X_{2} \sim U(0, 1)\). To compute the expectations of \(X_{(1)} = \min(X_{1}, X_{2})\) and \(X_{(2)} = \max(X_{1}, X_{2})\), we must first be able to write down the PDFs \(f_{X_{(1)}}(x)\) and \(f_{X_{(2)}}(x)\). In cases such as this — where a new random variable is defined indirectly, as a function of already-defined random variables — it’s often easier to first deduce the associated CDF (which we’ll denote here by capitalising \(f\) to \(F\)), since it relates more directly to probabilities. Indeed, for a general random variable \(X\), defined on the real line, one has that</p><p>\begin{align} \mathbb{Pr}(X \le x) = F_{X}(x) := \int_{-\infty}^{x} f_{X}(t) \, dt, \end{align}</p><p>and hence by the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus">Fundamental Theorem of Calculus</a> (FTC) that</p><p>\begin{align} F_{X}(x) = \int_{-\infty}^{x} f_{X}(t) \, dt \quad \Longrightarrow \quad f_{X}(x) = \frac{d}{dx}(F_{X}(x)). \end{align}</p><p>In our case, for a real number \(x\) in the unit interval, we have both</p><p>\begin{align} \mathbb{Pr}(\min(X_{1}, X_{2}) \le x) = F_{X_{(1)}}(x), \end{align}</p><p>and a corresponding statement for \(F_{X_{(2)}}(x)\). The probability \(\mathbb{Pr}(\min(X_{1}, X_{2}) \le x)\) can be interpreted as the area of a subregion of the unit square \([0, 1] \times [0, 1]\) in the \(X_{1} X_{2}\) plane. We use the code in the next cell to visualise this subregion.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">order_filter_2d</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="s">"""Given a 2-dimensional, 2 x N numpy array `samples`, an integer 
+    `k` in {0, 1, 2} and a real number `limit` in [0, 1], returns the 
+    2 x M subarray of `samples` for which each column vector has exactly 
+    `k` entries &lt;= `limit`."""</span>
+    <span class="c1"># `k` must be an integer in {0, 1, 2}.
+</span>    <span class="k">assert</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+    <span class="n">filtered_samples</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># sample is a 2 x N array =&gt; sample.transpose() is 
+</span>    <span class="c1"># N X 2, so its elements are 2D.
+</span>    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">.</span><span class="n">transpose</span><span class="p">():</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample</span>
+        <span class="c1"># how many of {x, y} are &lt;= `limit`?
+</span>        <span class="n">num_lte_limit</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">,</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">])</span>
+
+        <span class="c1"># if this number equals `k`, add the sample
+</span>        <span class="k">if</span> <span class="n">num_lte_limit</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">filtered_samples</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">filtered_samples</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_ax_values</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="s">"""Helper function to label `ax`."""</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'X_1'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'X_2'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Regions where X_(k) &lt; {}, colour-coded by k in [0, 1, 2]'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">limit</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_2d</span><span class="p">(</span><span class="n">region_samples</span><span class="p">,</span> <span class="n">dotwidth</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="s">"""Given a list `region_samples` of 2 x N numpy arrays living 
+    in [0, 1] x [0, 1], plot the 2D points in each array with a 
+    separate colour scheme. Each point has thickness `dotwidth` 
+    and `limit` is used only to label the graph."""</span>
+    <span class="n">colour</span> <span class="o">=</span> <span class="s">'white'</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">set_ax_colour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colour</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+    <span class="n">set_ax_values</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+    <span class="n">cmaps</span> <span class="o">=</span> <span class="p">[</span><span class="s">'magma'</span><span class="p">,</span> <span class="s">'viridis'</span><span class="p">,</span> <span class="s">'winter'</span><span class="p">]</span>
+    
+    <span class="c1"># display each region_sample in `region_samples`
+</span>    <span class="c1"># on the same axis, but with a separate colour scheme.
+</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">region_sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">region_samples</span><span class="p">):</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">region_sample</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">region_sample</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmaps</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmaps</span><span class="p">)]</span>
+        <span class="c1">#ax.scatter(xs, ys, c=xs+ys, cmap=cmap, linewidth=dotwidth, alpha=0.5)
+</span>        <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">xs</span><span class="p">.</span><span class="n">mean</span><span class="p">()]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">dotwidth</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</pre></table></code></div></div><h2 id="8-visualising-mathbbprx_k-le-x-in-the-plane">8. Visualising \(\mathbb{Pr}(X_{(k)} \le x)\) in the plane</h2><p>Let’s use the above code to visualise the regions where \(X_{(k)} \le x\), for \(k = 1, 2\). The areas of these regions will be the probabilities \(\mathbb{Pr}(X_{(k)} \le x)\).</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="c1"># sample 10,000 points to cover the unit square
+</span><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>
+<span class="n">dotwidth</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
+
+<span class="c1"># we're interested in which points have zero, one 
+# or two coordinates &lt;= 0.3
+</span><span class="n">limit</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">region_samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># For each k in [0, 1, 2], filter for the the 2D columns in 
+# `samples` having exactly `k` coordinates &lt;= 0.3.
+</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">filtered_samples</span> <span class="o">=</span> <span class="n">order_filter_2d</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+    <span class="n">region_samples</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">filtered_samples</span><span class="p">)</span>
+
+<span class="n">plot_2d</span><span class="p">(</span><span class="n">region_samples</span><span class="p">,</span> <span class="n">dotwidth</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+</pre></table></code></div></div><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/enrightward.github.io/assets/img/order-statistics/part1/order_stats_2d.png" alt="png" /></p><h2 id="9-analysing-the-visulation-computing-cdfs">9. Analysing the visulation: Computing CDFs</h2><p>In the scatter plot above, we uniformly sampled 10,000 points \(P = (x_{1}, x_{2})\) from the unit square, and coloured them according to whether none, only one, or both of the coordinates \(x_{1}\) and \(x_{2}\) of \(P\) were less than the (arbitrarily-chosen) cutoff value \(x = 0.3\). Specifically:</p><ol><li>The blue square region in the bottom-left corner is all the points for which \(x_{1} \le x\) and \(x_{2} \le x\). Call this region \(R_{2}\), because both inequalities hold.<li>The two purple rectangular regions along the axes are all the points for which either \(x_{1} \le x\) or \(x_{2} \le x\), but not both. Call this region \(R_{1}\), because only one inequality holds.<li>The large black square region in the top-right is all the points for which neither \(x_{1} \le x\) nor \(x_{2} \le x\) holds. Call this region \(R_{0}\), since neither inequality holds.</ol><p>Denote by \(A_{i}\) the area of the region \(R_{i}\). The \(A_{i}\) are easy to compute, because they are areas of squares or rectangles with known sides of length \(x\) or \(1-x\): \(A_{2} = x^{2}\), \(A_{0} = (1-x)^{2}\) and \(A_{1} = 2x(1-x)\). Note also that \(A_{i}\) represents the probability that the coordinates of a randomly-sampled \(P\) will satisfy the inequalities defining \(R_{i}\). For example,</p><p>\begin{align} \mathbb{Pr}(X_{1}, X_{2} \le x) = A_{2} = x^{2}. \end{align}</p><p>I claim this means we can also use the \(A_{i}\) to calculate the probabilities \(\mathbb{Pr}(X_{(k)} \le x = 0.3)\), for \(k = 1, 2\). To see this, observe that</p><p>\begin{align} X_{(1)} = \min(X_{1}, X_{2}) \le X_{1}, X_{2} \le \max(X_{1}, X_{2}) = X_{(2)}. \end{align}</p><p>This inequality shows that the condition \(X_{(2)} \le x\) is equivalent to requiring both \(X_{1} \le x\) and \(X_{2} \le x\). It follows that</p><p>\begin{align} \mathbb{Pr}(X_{(2)} \le x) = \mathbb{Pr}(X_{1}, X_{2} \le x) = x^{2}. \end{align}</p><p>We can also compute \(\mathbb{Pr}(X_{(1)} \le x)\) like this, though it is a little more work. The difference is that there are more orderings of \(X_{1}\), \(X_{2}\) and \(x\) that are relevant to the calculation. Indeed, consider the three inequality chains</p><p>\begin{align} X_{(1)} &amp;= X_{1} \le x \le X_{2} = X_{(2)} \newline X_{(1)} &amp;= X_{2} \le x \le X_{1} = X_{(2)} \newline X_{(1)} &amp;\le X_{(2)} \le x. \end{align}</p><p>This is a non-overlapping, exhaustive list arrangements of \(X_{1}, X_{2}\) and \(x\) satisfying the condition \(X_{(1)} \le x\). It follows that the sum of areas of the regions they describe equals \(\mathbb{Pr}(X_{(1)} \le x)\). What are these regions? The first two of these chains correspond to the two purple rectangles, which we denoted (jointly) by \(R_{1}\). The last chain is the same as the one considered in the \(\mathbb{Pr}(X_{(2)} \le x)\) calculation, and corresponds to \(A_{2}\). It follows that</p><p>\begin{align} \mathbb{Pr}(X_{(1)} \le x) = A_{1} + A_{2} = 2x(1-x) + x^{2} = 2x - x^{2}. \end{align}</p><h2 id="10-deriving-pdfs-from-cdfs-using-the-ftc">10. Deriving PDFs from CDFs using the FTC</h2><p>We have just computed:</p><p>\begin{align} F_{X_{(1)}}(x) &amp;= \mathbb{Pr}(X_{(1)} \le x) = 2x - x^{2}, \quad \textrm{and} \newline F_{X_{(2)}}(x) &amp;= \mathbb{Pr}(X_{(2)} \le x) = x^{2}. \end{align}</p><p>By the FTC, if follows</p><p>\begin{align} f_{X_{(1)}}(x) &amp;= \frac{d}{dx} \left( F_{X_{(1)}}(x) \right) = 2 - 2x, \newline f_{X_{(2)}}(x) &amp;= \frac{d}{dx} \left( F_{X_{(2)}}(x) \right) = 2x, \end{align}</p><p>and hence that</p><p>\begin{align} \mathbb{E}(X_{(1)}) &amp;= \int_{0}^{1} x \, f_{X_{(1)}}(x) \, dx = \int_{0}^{1} (2x - 2x^{2}) \, dx = \left \lbrack x^{2} - \frac{2x^{3}}{3} \right \rbrack_{0}^{1} = \frac{1}{3}, \newline \mathbb{E}(X_{(2)}) &amp;= \int_{0}^{1} x \, f_{X_{(2)}}(x) \, dx = \int_{0}^{1} 2x^{2} \, dx = \left \lbrack \frac{2x^{3}}{3} \right \rbrack_{0}^{1} = \frac{2}{3} \cdot \end{align}</p><h2 id="11-round-up">11. Round up</h2><p>In this post, we defined <em>order statistics</em> for \(n\) iid random variables, then explored numerically, using numpy, what the expectation of such statistics might be if the underlying distribution is uniform. Based on this, we conjectured that:</p><p>\begin{align} \mathbb{E} \left \lbrack X_{(k)} \right \rbrack = \frac{k}{n+1}, \end{align}</p><p>for all \(n\) and \(k\). We verified this mathematically for \(n = 1, 2\). In the <a href="https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-2/">next post</a>, I will derive a formula for \(\mathbb{E}[X_{(k)}]\) for arbitrary \(n\), and for any \(1 \le k \le n\), and for any underlying PDF \(f\), provided we know the associated CDF \(F\). This general formula will be used in the <a href="https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-3/">post after next</a> to prove the above expectation formula in the case where the \(X_{i}\) are uniform.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/enrightward.github.io/categories/statistics/'>statistics</a>, <a href='/enrightward.github.io/categories/order-statistics/'>order statistics</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/enrightward.github.io/tags/statistics/" class="post-tag no-text-decoration" >statistics</a> <a href="/enrightward.github.io/tags/order-statistics/" class="post-tag no-text-decoration" >order statistics</a> <a href="/enrightward.github.io/tags/uniform-distribution/" class="post-tag no-text-decoration" >uniform distribution</a> <a href="/enrightward.github.io/tags/ftc/" class="post-tag no-text-decoration" >FTC</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Order statistics — Part 1: Introduction and definitions - Logical Quantifier&url=https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Order statistics — Part 1: Introduction and definitions - Logical Quantifier&u=https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Order statistics — Part 1: Introduction and definitions - Logical Quantifier&url=https://enrightward.github.io/enrightward.github.io/posts/order-statistics-part-1/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/enrightward.github.io/posts/convolutions-part-2/">Convolutions of RVs — Part 2: A linear combination of uniform RVs</a><li><a href="/enrightward.github.io/posts/order-statistics-part-3/">Order statistics — Part 3: Proof of expectation formula for uniform RVs</a><li><a href="/enrightward.github.io/posts/cross-entropy-part-2/">Cross entropy — Part 2: Convexity of the objective function</a><li><a href="/enrightward.github.io/posts/cross-entropy-part-1/">Cross entropy — Part 1: Introduction and definitions</a><li><a href="/enrightward.github.io/posts/order-statistics-part-2/">Order statistics — Part 2: General formulae for PDFs and expectations</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/enrightward.github.io/tags/statistics/">statistics</a> <a class="post-tag" href="/enrightward.github.io/tags/uniform-distribution/">uniform distribution</a> <a class="post-tag" href="/enrightward.github.io/tags/order-statistics/">order statistics</a> <a class="post-tag" href="/enrightward.github.io/tags/convolutions/">convolutions</a> <a class="post-tag" href="/enrightward.github.io/tags/cross-entropy/">cross entropy</a> <a class="post-tag" href="/enrightward.github.io/tags/beta-function/">beta function</a> <a class="post-tag" href="/enrightward.github.io/tags/convexity/">convexity</a> <a class="post-tag" href="/enrightward.github.io/tags/entropy/">entropy</a> <a class="post-tag" href="/enrightward.github.io/tags/expectation-formula/">expectation formula</a> <a class="post-tag" href="/enrightward.github.io/tags/ftc/">FTC</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/enrightward.github.io/posts/order-statistics-part-2/"><div class="card-body"> <span class="timeago small" > Mar 7 <i class="unloaded">2021-03-07T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Order statistics — Part 2: General formulae for PDFs and expectations</h3><div class="text-muted small"><p> 1. Introduction In the last post, we defined the order statistics of a collection of iid random variables \(X_{1}, \ldots, X_{n}\), to try and answer questions like “What’s the expected value of...</p></div></div></a></div><div class="card"> <a href="/enrightward.github.io/posts/order-statistics-part-3/"><div class="card-body"> <span class="timeago small" > Mar 8 <i class="unloaded">2021-03-08T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Order statistics — Part 3: Proof of expectation formula for uniform RVs</h3><div class="text-muted small"><p> 1. Introduction In the last post, we proved the following general formulae, after conducting some numerical experiments to gain intuition: \begin{align} F_{X_{(k)}}(x) &amp;= \sum_{j=k}^{n} \bi...</p></div></div></a></div><div class="card"> <a href="/enrightward.github.io/posts/convolutions-part-1/"><div class="card-body"> <span class="timeago small" > Mar 14 <i class="unloaded">2021-03-14T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Convolutions of random variables — Part 1: Introduction</h3><div class="text-muted small"><p> 1. Introduction Suppose that \(X\) and \(Y\) are two continuous random variables. Given their PDFs PDFs \(f_{X}\) and \(f_{Y}\), how do you compute the \(f_{X + Y}\) of the sum of \(X+Y\)? In th...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/enrightward.github.io/posts/cross-entropy-part-2/" class="btn btn-outline-primary" prompt="Older"><p>Cross entropy — Part 2: Convexity of the objective function</p></a> <a href="/enrightward.github.io/posts/order-statistics-part-2/" class="btn btn-outline-primary" prompt="Newer"><p>Order statistics — Part 2: General formulae for PDFs and expectations</p></a></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('.post-content img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/username">Stephen Enright-Ward</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/enrightward.github.io/tags/statistics/">statistics</a> <a class="post-tag" href="/enrightward.github.io/tags/uniform-distribution/">uniform distribution</a> <a class="post-tag" href="/enrightward.github.io/tags/order-statistics/">order statistics</a> <a class="post-tag" href="/enrightward.github.io/tags/convolutions/">convolutions</a> <a class="post-tag" href="/enrightward.github.io/tags/cross-entropy/">cross entropy</a> <a class="post-tag" href="/enrightward.github.io/tags/beta-function/">beta function</a> <a class="post-tag" href="/enrightward.github.io/tags/convexity/">convexity</a> <a class="post-tag" href="/enrightward.github.io/tags/entropy/">entropy</a> <a class="post-tag" href="/enrightward.github.io/tags/expectation-formula/">expectation formula</a> <a class="post-tag" href="/enrightward.github.io/tags/ftc/">FTC</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/enrightward.github.io/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://enrightward.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
