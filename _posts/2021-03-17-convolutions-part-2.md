@@ -51,17 +51,6 @@ Inside the integrand, $$z$$ functions as a constant. Since $$X, Y \sim U(0, 1)$$
 
 \begin{align}
 f_{aX}(x) &= \left\vert \frac{1}{a} \right\vert f \left( \frac{x}{a} \right) = 
-\left\vert \frac{1}{a} \right\vert \mathbb{1}_{[0, 1]} \left( \frac{x}{a} \right) = 
-\left\\{ \begin{array}{ll}
-\left\vert \frac{1}{a} \right\vert \mathbb{1} & b \newline
-c & d
-\end{array} \right.
-\end{align}
-
-xxx
-
-\begin{align}
-f_{aX}(x) &= \left\vert \frac{1}{a} \right\vert f \left( \frac{x}{a} \right) = 
 \left\vert \frac{1}{a} \right\vert {\mathbb{1}}\_{[0, 1]} \left( \frac{x}{a} \right) = 
 \left\\{ \begin{array}{ll}
 \left\vert \frac{1}{a} \right\vert {\mathbb{1}}\_{[0, a]}(x), & \textrm{if } a > 0, \newline
@@ -192,6 +181,10 @@ figsize = (10, 6)
 title = 'PDF of aX+bY, where X and Y uniform'
 graph_piecemeal(boundaries, formulae, resolution, figsize, title)
 ```
+
+
+![png](convolutions-part-2_files/convolutions-part-2_7_0.png)
+
 
 ![png](/assets/img/convolutions/indicator_ab.png)
 
