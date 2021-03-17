@@ -182,10 +182,6 @@ title = 'PDF of aX+bY, where X and Y uniform'
 graph_piecemeal(boundaries, formulae, resolution, figsize, title)
 ```
 
-
-![png](convolutions-part-2_files/convolutions-part-2_7_0.png)
-
-
 ![png](/assets/img/convolutions/indicator_ab.png)
 
 This time, the PDF has the shape of a flattened pyramid. The plateau on top ranges between $$a=2$$ and $$b=10$$ (and since the roles of $$X$$ and $$Y$$ are symmetric in this formula, it would range between $$b$$ and $$a$$ if $$b$$ were the smaller constant).
